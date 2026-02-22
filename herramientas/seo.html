@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google SEO Command Center</title>
+    <style>
+        :root {
+            --google-blue: #4285F4;
+            --google-red: #EA4335;
+            --google-yellow: #FBBC05;
+            --google-green: #34A853;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+        }
 
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--google-blue);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 5px solid var(--google-blue);
+        }
+
+        .card:hover {
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            transform: translateY(-5px);
+        }
+
+        .card.red { border-top-color: var(--google-red); }
+        .card.yellow { border-top-color: var(--google-yellow); }
+        .card.green { border-top-color: var(--google-green); }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: #202124;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #5f6368;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--google-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            text-align: center;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: none;
+            transition: box-shadow 0.2s;
+        }
+
+        #searchInput:focus {
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SEO Google Tools</h1>
+        <p>Tu acceso directo al ecosistema de optimización de Google</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Buscar herramienta SEO..." onkeyup="filterCards()">
+    </div>
+
+    <div class="grid" id="toolsGrid">
+        </div>
+
+    <script>
+        const tools = [
+            { name: "Search Console", desc: "Monitoriza la presencia de tu sitio en los resultados de búsqueda.", url: "https://search.google.com/search-console", color: "blue" },
+            { name: "Google Analytics 4", desc: "Mide el tráfico, el comportamiento del usuario y las conversiones.", url: "https://analytics.google.com/", color: "green" },
+            { name: "PageSpeed Insights", desc: "Analiza la velocidad de carga y Core Web Vitals en móvil y escritorio.", url: "https://pagespeed.web.dev/", color: "yellow" },
+            { name: "Keyword Planner", desc: "Encuentra palabras clave y volumen de búsqueda (vía Google Ads).", url: "https://ads.google.com/home/tools/keyword-planner/", color: "red" },
+            { name: "Google Trends", desc: "Analiza la popularidad de términos de búsqueda a lo largo del tiempo.", url: "https://trends.google.com/", color: "blue" },
+            { name: "Rich Results Test", desc: "Comprueba si tu marcado de datos estructurados es correcto.", url: "https://search.google.com/test/rich-results", color: "green" },
+            { name: "Google Business Profile", desc: "Gestiona tu presencia en Google Maps y SEO Local.", url: "https://www.google.com/business/", color: "yellow" },
+            { name: "Tag Manager", desc: "Gestiona etiquetas de marketing sin modificar el código directamente.", url: "https://tagmanager.google.com/", color: "red" },
+            { name: "Merchant Center", desc: "Gestiona tus productos para que aparezcan en Google Shopping.", url: "https://www.google.com/retail/solutions/merchant-center/", color: "blue" },
+            { name: "Looker Studio", desc: "Crea informes visuales personalizados con datos de SEO.", url: "https://lookerstudio.google.com/", color: "green" },
+            { name: "Mobile-Friendly Test", desc: "Verifica si tu página está optimizada para dispositivos móviles.", url: "https://search.google.com/test/mobile-friendly", color: "yellow" },
+            { name: "Google News Publisher", desc: "Envía tu contenido para aparecer en la sección de Noticias.", url: "https://publishercenter.google.com/", color: "red" }
+        ];
+
+        function displayTools(toolsToRender) {
+            const grid = document.getElementById('toolsGrid');
+            grid.innerHTML = toolsToRender.map(tool => `
+                <div class="card ${tool.color}">
+                    <div>
+                        <h3>${tool.name}</h3>
+                        <p>${tool.desc}</p>
+                    </div>
+                    <a href="${tool.url}" target="_blank" class="btn">Abrir Herramienta</a>
+                </div>
+            `).join('');
+        }
+
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = tools.filter(tool => 
+                tool.name.toLowerCase().includes(query) || 
+                tool.desc.toLowerCase().includes(query)
+            );
+            displayTools(filtered);
+        }
+
+        // Carga inicial
+        displayTools(tools);
+    </script>
+
+</body>
+</html>
