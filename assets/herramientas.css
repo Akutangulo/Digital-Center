@@ -1,1 +1,174 @@
+        :root {
+            --primary-blue: #4285F4;
+            --primary-red: #EA4335;
+            --primary-yellow: #FBBC05;
+            --primary-green: #34A853;
+            --ai-purple: #8e44ad; /* Color temático para IA */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #3c4043;
+        }
 
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--ai-purple);
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #5f6368;
+            margin-bottom: 20px;
+        }
+
+        /* Navegación rápida entre tus páginas */
+        .nav-pills {
+            margin-bottom: 30px;
+        }
+        .nav-pills a {
+            text-decoration: none;
+            color: #5f6368;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: #e8eaed;
+            margin: 0 5px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .nav-pills a:hover {
+            background: #dadce0;
+        }
+        .nav-pills a.active {
+            background: var(--ai-purple);
+            color: white;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px 24px;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            font-size: 16px;
+            outline: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: box-shadow 0.2s;
+        }
+
+        #searchInput:focus {
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 5px solid var(--ai-purple);
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Colores aleatorios para las tarjetas para dar dinamismo */
+        .card.blue { border-top-color: var(--primary-blue); }
+        .card.red { border-top-color: var(--primary-red); }
+        .card.yellow { border-top-color: var(--primary-yellow); }
+        .card.green { border-top-color: var(--primary-green); }
+
+        .card h3 {
+            margin: 0 0 12px 0;
+            font-size: 1.3rem;
+            color: #202124;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #5f6368;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #f8f9fa;
+            color: var(--ai-purple);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid var(--ai-purple);
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--ai-purple);
+            color: white;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            color: #70757a;
+            font-size: 0.9rem;
+        }
+
+                /* Ajustes específicos para que la Home se vea como un Hub */
+        .main-hub {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 40px;
+        }
+        .card-hub {
+            text-align: center;
+            padding: 40px 20px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card-hub i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .card-hub h2 {
+            margin: 10px 0;
+            color: #202124;
+        }
