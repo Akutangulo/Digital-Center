@@ -1,85 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-      <link
-        rel="icon"
-        type="image/svg+xml"
-        href="../assets/images/logo-akutangulo-web-design-seo-chatbot-ia.svg"
-      />
+  <head>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="../assets/images/logo-akutangulo-web-design-seo-chatbot-ia.svg"
+    />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google SEO Command Center</title>
-<link href="../assets/herramientas.css" rel="stylesheet" type="text/css">
-</head>
-<body>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SEO Command Center</title>
+    <link
+      href="../assets/herramientas.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
 
+  <body>
     <header>
-        <h1>SEO Google Tools</h1>
-        <p>Tu acceso directo al ecosistema de optimización de Google</p>
+      <h1>SEO Tools</h1>
+      <p>Tu acceso directo a herramientas de posicionamiento y analítica web</p>
     </header>
 
-        <nav class="nav-pills">
-        <a href="../index.html">Inicio</a>
-        <a href="#" class="active">SEO</a>
-        <a href="./ia-facturacion.html">Facturación APIs</a>
-        <a href="./ia-playgrounds.html">Playgrounds</a>
-        <a href="./ia-chats.html">Chats Gratis</a>
-        <a href="./mis-webs.html">Mis Webs</a>
+    <nav class="nav-pills">
+      <a href="../index.html">Inicio</a>
+      <a href="#" class="active">SEO</a>
+      <a href="./ia-facturacion.html">Facturación APIs</a>
+      <a href="./ia-playgrounds.html">Playgrounds</a>
+      <a href="./ia-chats.html">Chats Gratis</a>
+      <a href="./mis-webs.html">Mis Webs</a>
     </nav>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Buscar herramienta SEO..." onkeyup="filterCards()">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Buscar herramienta SEO..."
+        onkeyup="filterCards()"
+      />
     </div>
 
-    <div class="grid" id="toolsGrid">
-        </div>
+    <div class="grid" id="toolsGrid"></div>
 
-            <footer>
-        © 2026 Digital Command Center | Desarrollado para <a href="https://akutangulo.com">Akutangulo.com</a> 
+    <footer>
+      © 2026 Digital Command Center | Desarrollado para
+      <a href="https://akutangulo.com">Akutangulo.com</a>
     </footer>
 
     <script>
-        const tools = [
-            { name: "Search Console", desc: "Monitoriza la presencia de tu sitio en los resultados de búsqueda.", url: "https://search.google.com/search-console", color: "blue" },
-            { name: "Google Analytics 4", desc: "Mide el tráfico, el comportamiento del usuario y las conversiones.", url: "https://analytics.google.com/", color: "green" },
-            { name: "PageSpeed Insights", desc: "Analiza la velocidad de carga y Core Web Vitals en móvil y escritorio.", url: "https://pagespeed.web.dev/", color: "yellow" },
-            { name: "Keyword Planner", desc: "Encuentra palabras clave y volumen de búsqueda (vía Google Ads).", url: "https://ads.google.com/home/tools/keyword-planner/", color: "red" },
-            { name: "Google Trends", desc: "Analiza la popularidad de términos de búsqueda a lo largo del tiempo.", url: "https://trends.google.com/", color: "blue" },
-            { name: "Rich Results Test", desc: "Comprueba si tu marcado de datos estructurados es correcto.", url: "https://search.google.com/test/rich-results", color: "green" },
-            { name: "Google Business Profile", desc: "Gestiona tu presencia en Google Maps y SEO Local.", url: "https://www.google.com/business/", color: "yellow" },
-            { name: "Tag Manager", desc: "Gestiona etiquetas de marketing sin modificar el código directamente.", url: "https://tagmanager.google.com/", color: "red" },
-            { name: "Merchant Center", desc: "Gestiona tus productos para que aparezcan en Google Shopping.", url: "https://www.google.com/retail/solutions/merchant-center/", color: "blue" },
-            { name: "Looker Studio", desc: "Crea informes visuales personalizados con datos de SEO.", url: "https://lookerstudio.google.com/", color: "green" },
-            { name: "Mobile-Friendly Test", desc: "Verifica si tu página está optimizada para dispositivos móviles.", url: "https://search.google.com/test/mobile-friendly", color: "yellow" },
-            { name: "Google News Publisher", desc: "Envía tu contenido para aparecer en la sección de Noticias.", url: "https://publishercenter.google.com/", color: "red" }
-        ];
+      const tools = [
+        {
+          name: "Google Search Console",
+          desc: "Monitoriza la presencia de tu sitio en los resultados de búsqueda de Google.",
+          url: "https://search.google.com/search-console",
+          color: "blue",
+        },
+        {
+          name: "Bing Webmaster Tools",
+          desc: "Supervisa la indexación, el rendimiento y la visibilidad de tus sitios en Bing.",
+          url: "https://www.bing.com/webmasters/",
+          color: "green",
+        },
+        {
+          name: "Google Analytics 4",
+          desc: "Mide el tráfico, el comportamiento del usuario y las conversiones.",
+          url: "https://analytics.google.com/",
+          color: "green",
+        },
+        {
+          name: "PageSpeed Insights",
+          desc: "Analiza la velocidad de carga y Core Web Vitals en móvil y escritorio.",
+          url: "https://pagespeed.web.dev/",
+          color: "yellow",
+        },
+        {
+          name: "Keyword Planner",
+          desc: "Encuentra palabras clave y volumen de búsqueda mediante Google Ads.",
+          url: "https://ads.google.com/home/tools/keyword-planner/",
+          color: "red",
+        },
+        {
+          name: "Google Trends",
+          desc: "Analiza la popularidad de términos de búsqueda a lo largo del tiempo.",
+          url: "https://trends.google.com/",
+          color: "blue",
+        },
+        {
+          name: "Rich Results Test",
+          desc: "Comprueba si tu marcado de datos estructurados es correcto.",
+          url: "https://search.google.com/test/rich-results",
+          color: "green",
+        },
+        {
+          name: "Google Business Profile",
+          desc: "Gestiona tu presencia en Google Maps y el posicionamiento local.",
+          url: "https://www.google.com/business/",
+          color: "yellow",
+        },
+        {
+          name: "Tag Manager",
+          desc: "Gestiona etiquetas de marketing sin modificar el código directamente.",
+          url: "https://tagmanager.google.com/",
+          color: "red",
+        },
+        {
+          name: "Merchant Center",
+          desc: "Gestiona tus productos para que aparezcan en Google Shopping.",
+          url: "https://www.google.com/retail/solutions/merchant-center/",
+          color: "blue",
+        },
+        {
+          name: "Looker Studio",
+          desc: "Crea informes visuales personalizados con datos de SEO.",
+          url: "https://lookerstudio.google.com/",
+          color: "green",
+        },
+        {
+          name: "Mobile-Friendly Test",
+          desc: "Verifica si tu página está optimizada para dispositivos móviles.",
+          url: "https://search.google.com/test/mobile-friendly",
+          color: "yellow",
+        },
+        {
+          name: "Google News Publisher",
+          desc: "Envía tu contenido para aparecer en la sección de Noticias.",
+          url: "https://publishercenter.google.com/",
+          color: "red",
+        },
+      ];
 
-        function displayTools(toolsToRender) {
-            const grid = document.getElementById('toolsGrid');
-            grid.innerHTML = toolsToRender.map(tool => `
-                <div class="card ${tool.color}">
-                    <div>
-                        <h3>${tool.name}</h3>
-                        <p>${tool.desc}</p>
-                    </div>
-                    <a href="${tool.url}" target="_blank" class="btn">Abrir Herramienta</a>
+      function displayTools(toolsToRender) {
+        const grid = document.getElementById("toolsGrid");
+
+        grid.innerHTML = toolsToRender
+          .map(
+            (tool) => `
+              <div class="card ${tool.color}">
+                <div>
+                  <h3>${tool.name}</h3>
+                  <p>${tool.desc}</p>
                 </div>
-            `).join('');
-        }
 
-        function filterCards() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = tools.filter(tool => 
-                tool.name.toLowerCase().includes(query) || 
-                tool.desc.toLowerCase().includes(query)
-            );
-            displayTools(filtered);
-        }
+                <a
+                  href="${tool.url}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn"
+                >
+                  Abrir Herramienta
+                </a>
+              </div>
+            `,
+          )
+          .join("");
+      }
 
-        // Carga inicial
-        displayTools(tools);
+      function filterCards() {
+        const query = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+
+        const filtered = tools.filter(
+          (tool) =>
+            tool.name.toLowerCase().includes(query) ||
+            tool.desc.toLowerCase().includes(query),
+        );
+
+        displayTools(filtered);
+      }
+
+      // Carga inicial
+      displayTools(tools);
     </script>
-
-</body>
+  </body>
 </html>
